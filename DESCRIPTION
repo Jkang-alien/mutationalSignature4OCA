@@ -1,13 +1,19 @@
 Package: mutationalSignature4OCA
 Type: Package
-Title: What the Package Does (Title Case)
+Title: SATS for OCA Plus
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Jun Kang
+Maintainer: Jun Kang <jkang.alien@gmail.com>
+Description: SATS for OCA Plus
+License: GNU General Public License v3.0
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/Jkang-alien/mutationalSignature4OCA
 BugReports: https://github.com/Jkang-alien/mutationalSignature4OCA/issues
+Depends: 
+    R (>= 2.10)
+Imports:
+    dplyr,
+    purrr (>= 0.3.3),
+    stringr (>= 1.4.0),
+RoxygenNote: 7.2.3
