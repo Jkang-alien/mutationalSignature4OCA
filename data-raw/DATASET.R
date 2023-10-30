@@ -26,5 +26,25 @@ colnames4signeR <- context4signeR$subs
 
 #colnames(mut) == colnames4signeR
 
-usethis::use_data(rownames4SATS, colnames4signeR, overwrite = TRUE)
-usethis::use_data(target_regions)
+library(rtracklayer)
+
+target_regions_exon <- import(con=("D:/rproject/mmrMsi/data/hg19_Twist_ILMN_Exome_2.0_Plus_Panel_annotated.BED"), format="bed")
+target_regions_ocaplus <- import(con=("D:/rproject/mmrMsi/data/target_region_Oncomine_Comprehensive_Plus_DNA_Regions_v1.5.bed"), format="bed")
+
+#usethis::use_data(rownames4SATS, colnames4signeR, overwrite = TRUE)
+#usethis::use_data(target_regions_exon, target_regions_ocaplus)
+
+
+################################################
+
+mmrSign <- read_csv(here::here("D:/rproject/mmrMsi/data/MMR_TMB_Sig.csv"))
+rownames(mmrSign) <- mmrSign$...1
+W_TMB_MMR <- mmrSign |> select(-...1)
+
+#usethis::use_data(W_TMB_MMR)
+
+
+data(SimData, package = "SATS")
+
+W_TMB <- SimData$W_TMB
+usethis::use_data(W_TMB)

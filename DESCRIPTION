@@ -16,4 +16,9 @@ Imports:
     dplyr,
     purrr (>= 0.3.3),
     stringr (>= 1.4.0),
+    BSgenome.Hsapiens.UCSC.hg19,
+    SATS,
+    gtools,
+    rtracklayer,
+    signeR,
 RoxygenNote: 7.2.3
