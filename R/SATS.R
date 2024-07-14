@@ -72,7 +72,7 @@ mmrdSignature <- function(data4signeR, data4sats) {
 #'
 #' @param data4signeR data for signeR
 #' @param data4sats data for signeR
-#' @returns A tiblle
+#' @returns A list including opp, H_hat, reconstruction profile, and SigExp
 #' @import gtools
 #' @import SATS
 #' @import signeR
@@ -83,6 +83,7 @@ mmrdSignature <- function(data4signeR, data4sats) {
 #' \dontrun{
 #' cosmicSignature(data)
 #' }
+
 cosmicSignature <- function(data4signeR, data4sats) {
   opp <- genOpportunityFromGenome(BSgenome.Hsapiens.UCSC.hg19,
                                   target_regions_ocaplus, nsamples=nrow(data4signeR))
@@ -92,5 +93,7 @@ cosmicSignature <- function(data4signeR, data4sats) {
     t() |>
     as_tibble() |>
     mutate(sample =colnames(SigExp))
-  return(SigExp)
+  reconProfile <- t(opp)*(as.matrix(W_TMB) %*% H_hat$H)
+  return(list(opp, H_hat, reconProfile, SigExp))
 }
+
